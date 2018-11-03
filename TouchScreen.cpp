@@ -169,6 +169,17 @@ TSPoint TouchScreen::getPoint(void) {
      z = 0;
    }
 
+   //Clean the touchScreen settings after function is used
+   //Because LCD may use the same pins
+   pinMode(_xm, OUTPUT);
+   digitalWrite(_xm, LOW);
+   pinMode(_yp, OUTPUT);
+   digitalWrite(_yp, HIGH);
+   pinMode(_ym, OUTPUT);
+   digitalWrite(_ym, LOW);
+   pinMode(_xp, OUTPUT);
+   digitalWrite(_xp, HIGH); 
+
    return TSPoint(x, y, z);
 }
 
